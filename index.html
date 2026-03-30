@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para meu amor</title>
+
+    <link rel="stylesheet" href="estilo.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+</head>
+
+<body>
+
+<header class="cabecalho">
+    <div class="logo">
+        <img src="img/logo.png" width="50px">
+    </div>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Séries</a>
+        <a href="#">Filmes</a>
+        <a href="#">Minha lista</a>
+    </nav>
+</header>
+
+<section class="banner">
+    <div class="conteudo">
+
+        <p class="titulo">Thales e Leticia</p>
+
+        <p class="detalhes">
+            <span>21 DE MARÇO, 1 TEMPORADA</span>
+            <span class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </span>
+        </p>
+
+        <p class="descricao">
+            Tudo começou em 16 de dezembro de 2025, quando dois caminhos que não buscavam nada sério acabaram se cruzando de forma inesperada. O que parecia ser apenas mais um math... era na verdade obra do destino.
+            Dias depois, no primeiro encontro, havia
+
+            <span id="pontos">...</span>
+
+            <span id="mais">
+                 nervosismo, timidez e um certo desajeito — especialmente da parte dele. Não foi perfeito, não foi digno de
+                 filme… mas, de alguma forma, foi real. E talvez tenha sido exatamente isso que fez tudo ser diferente.
+                Ela estava incrível. Ele, completamente sem jeito. O beijo não foi dos melhores… mas foi o suficiente para que algo nascesse ali.
+                Mesmo com a timidez dele e todas as imperfeições do momento, ela decidiu ficar. E, pouco a pouco, conversas se tornaram rotina, encontros se tornaram necessários… e o que era pra ser passageiro começou a criar raízes.
+                Sem perceber, aquilo que nenhum dos dois procurava se transformou em algo verdadeiro. A ideia de não querer um relacionamento foi ficando para trás, dando espaço para um sentimento cada vez mais forte, mais leve… mais certo.
+                E então, no dia 21 de março de 2026, ele fez o pedido, não como um gesto perfeito, mas como uma certeza. A certeza de que, entre tantas possibilidades no mundo, era ao lado dela que ele queria estar.
+                Porque, no fim, não era só sobre como tudo começou… era sobre como, sem perceber, ela se tornou o lugar onde ele encontrou paz, amor, sentido e tudo aquilo que nem mesmo ele sabia que estava procurando.
+                Foi ali que começou — não por acaso, mas como obra do destino — uma longa e linda história de amor… daquelas que não se explicam, apenas se vivem.
+            </span>
+        </p>
+
+        <button onclick="lerMais()" id="btnLerMais">Ler mais</button>
+
+        <div class="botoes">
+            <button><i class="fa-solid fa-play"></i> Continuar</button>
+            <button><i class="fa-solid fa-star"></i> Favorito</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="momentos">
+    <h2>Nossos Momentos</h2>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide"><img src="./img/1.jpeg"></div>
+            <div class="swiper-slide"><img src="./img/2.jpeg"></div>
+            <div class="swiper-slide"><img src="./img/3.jpeg"></div>
+            <div class="swiper-slide"><img src="./img/4.jpeg"></div>
+            <div class="swiper-slide"><img src="./img/5.jpeg"></div>
+            <div class="swiper-slide"><img src="./img/6.jpeg"></div>
+            <div class="swiper-slide"><img src="./img/7.jpeg"></div>
+            <div class="swiper-slide"><img src="./img/8.jpeg"></div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    21/03/2026 - Para Todo o Sempre
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+<script>
+// LER MAIS
+function lerMais() {
+    let pontos = document.getElementById("pontos");
+    let maisTexto = document.getElementById("mais");
+    let btn = document.getElementById("btnLerMais");
+
+    if (pontos.style.display === "none") {
+        pontos.style.display = "inline";
+        maisTexto.style.display = "none";
+        btn.innerHTML = "Ler mais";
+    } else {
+        pontos.style.display = "none";
+        maisTexto.style.display = "inline";
+        btn.innerHTML = "Ler menos";
+    }
+}
+
+// SWIPER
+const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+    },
+    slidesPerView: 2,
+    spaceBetween: 10,
+    breakpoints: {
+        600: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+        },
+        900: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+        }
+    }
+});
+
+// CORAÇÃO AO CLICAR
+document.querySelectorAll('.swiper-slide img').forEach(img => {
+    img.addEventListener('click', (e) => {
+
+        let heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+
+        heart.style.left = e.clientX + 'px';
+        heart.style.top = e.clientY + 'px';
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 3000);
+    });
+});
+</script>
+
+</body>
+</html>
